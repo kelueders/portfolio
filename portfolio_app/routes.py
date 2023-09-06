@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template
 import requests
+import random
 
 site = Blueprint('site', __name__, template_folder='templates')
 
@@ -18,20 +19,32 @@ def projects():
     print('Projects')
     return render_template('projects.html')
 
-@site.route('/workout/<id>')
+@site.route('/workout/', methods=['GET'])
 def workout():
-    url = "https://exercisedb.p.rapidapi.com/exercises/bodyPart/back"
+    
+    url_bodyPart = "https://exercisedb.p.rapidapi.com/exercises/bodyPart/back"
 
     headers = {
         "X-RapidAPI-Key": "24242474c2msh279df8013b73b3ap1cf7b1jsncf839b04e2e2",
         "X-RapidAPI-Host": "exercisedb.p.rapidapi.com"
     }
 
-    response = requests.get(url, headers=headers)
+    data = requests.get(url_bodyPart, headers=headers).json()
 
-    print(response.json())
+    ids = []
 
-    return render_template('workout.html')
+    for elem in data:
+        for k, v in elem.items():
+            if k == 'id':
+                ids.append(v)
+
+    result = random.choice(ids)
+
+    url_id = f"https://exercisedb.p.rapidapi.com/exercises/exercise/{result}"
+
+    exercise = requests.get(url_id, headers=headers).json()
+
+    return render_template('workout.html', exercise = exercise)
 
 # @site.route('/contact')
 # def about():

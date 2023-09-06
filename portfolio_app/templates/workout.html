@@ -5,18 +5,23 @@
 <div class="container text-center">
     <div class="row">
         <div class="col">
-            <a href="#">chest</a>
-        </div>
-        <div class="col">
-            <a href="#">shoulders</a>
-        </div>
-        <div class="col">
-            <a href="#">lower legs</a>
-        </div>
-        <div class="col">
-            <a href="#">upper legs</a>
+            <form action="{{ url_for('site.workout') }}" method="GET">
+                <label for="body_parts">Choose a body part:</label>
+                <select name="body_parts" id="body_parts">
+                    <option value="chest">Chest</option>
+                    <option value="shoulders">Shoulders</option>
+                    <option value="lower legs">Lower legs</option>
+                    <option value="upper legs">Upper legs</option>
+                </select>
+                <br><br>
+                <input type="submit" value="Submit">
+            </form>
         </div>
     </div>
+</div>
+<div>
+    <span>{{ exercise['id'] }}</span>
+    <p>{{ exercise['name'] }}</p>
 </div>
 
 {% endblock content %}
