@@ -9,10 +9,10 @@ def home():
     print('Testing the homepage')
     return render_template('index.html')
 
-# @site.route('/about')
-# def about():
-#     print('About')
-#     return render_template('about.html')
+@site.route('/about')
+def about():
+    print('About')
+    return render_template('about.html')
 
 @site.route('/projects')
 def projects():
@@ -22,7 +22,7 @@ def projects():
 @site.route('/workout/', methods=['GET'])
 def workout():
     
-    url_bodyPart = "https://exercisedb.p.rapidapi.com/exercises/bodyPart/back"
+    url_bodyPart = "https://exercisedb.p.rapidapi.com/exercises/"
 
     headers = {
         "X-RapidAPI-Key": "24242474c2msh279df8013b73b3ap1cf7b1jsncf839b04e2e2",

@@ -5,23 +5,40 @@
 <div class="container text-center">
     <div class="row">
         <div class="col">
+            <h1>Workout</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <p>This bonus page uses the <a href="https://rapidapi.com/justin-WFnsXH_t6/api/exercisedb">ExerciseDB</a> API to serve up a random exercise for you to get yourself motivated to stay healthy and moving. I was inspired for this feature because of my interest in entering healthcare tech as a developer and given my past experience as a physical therapist.</p>
+            <hr>
+            <!-- <p>Please select a body part to receive a random exercise for that region of the body.</p> -->
+        </div>
+    </div>
+    <!-- <div class="row">
+        <div class="col">
             <form action="{{ url_for('site.workout') }}" method="GET">
                 <label for="body_parts">Choose a body part:</label>
                 <select name="body_parts" id="body_parts">
                     <option value="chest">Chest</option>
                     <option value="shoulders">Shoulders</option>
-                    <option value="lower legs">Lower legs</option>
-                    <option value="upper legs">Upper legs</option>
+                    <option value="lower%20legs">Lower legs</option>
+                    <option value="upper%20legs">Upper legs</option>
                 </select>
                 <br><br>
                 <input type="submit" value="Submit">
             </form>
         </div>
+    </div> -->
+    <div class="row">
+        <div class="col">
+            <img src="{{ exercise['gifUrl'] }}">
+            <p>{{ exercise['name'] }}</p>
+            <p>Target Muscles: {{ exercise['target'] }}</p>
+            <p>Equipment Needed: {{ exercise['equipment'] }}</p>
+        </div>
     </div>
 </div>
-<div>
-    <span>{{ exercise['id'] }}</span>
-    <p>{{ exercise['name'] }}</p>
-</div>
+
 
 {% endblock content %}
