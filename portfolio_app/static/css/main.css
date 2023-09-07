@@ -36,3 +36,7 @@ body {
 .row {
     margin-top: 5%;
 }
+
+.front-page {
+    justify-content: center;
+}
